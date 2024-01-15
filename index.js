@@ -1,3 +1,5 @@
+const { default: test } = require("node:test");
+
 let moistureLevel = 0;
 const fine = "Clay";
 const medium = "Loamy";
@@ -20,7 +22,7 @@ function calculate(moistureLevel, soilType){
       }  
       else if (moistureLevel >= 80) {        
         irrigationNeed = false;
-        console.log('level 80 or plus' + 'Irrigation is needed: ' + irrigationNeed );  
+        console.log('level 80 or plus ' + 'Irrigation is needed: ' + irrigationNeed );  
         }    
       }
   
@@ -36,7 +38,7 @@ function calculate(moistureLevel, soilType){
       }  
       else if (moistureLevel >= 88) {        
         irrigationNeed = false;
-        console.log('level 88 or plus' + 'Irrigation is needed: ' + irrigationNeed );  
+        console.log('level 88 or plus ' + 'Irrigation is needed: ' + irrigationNeed );  
         }
       }
       
@@ -61,87 +63,24 @@ function calculate(moistureLevel, soilType){
   catch(error){ console.error('Error: ' + error.message); }
 }
 
-
 function logSoil(moistureLevel, soilType){
   if(soilType && moistureLevel !== null){
     console.log('Soil Type: ' + soilType + ' moisture level: ' + moistureLevel)
   } else{throw new Error('Error: Soil Type or Moisture Level is null')}
 }
+
+function testFunc(soilType, levels){
+  console.log('==========================================================')
+  console.log('Testing ' + soilType + ' soil')
+
+  levels.forEach((level, index) =>{ 
+    console.log('Test ' + (index + 1) + ': ' + level);
+    moistureLevel = test;
+    calculate(level, soilType);
+  });
   
-console.log('==================================================================')
-console.log('Fine Testing')
-console.log('Test 1: moistureLevel = null');
-moistureLevel = null
-calculate(moistureLevel, fine);
+}
 
-console.log('Test 2: soil type = null');
-moistureLevel = 55
-calculate(moistureLevel, null);
-
-console.log('Test 3: moistureLevel = 60');
-moistureLevel = 60
-calculate(moistureLevel, fine);
-
-console.log('Test 4: moistureLevel = 75');
-moistureLevel = 75
-calculate(moistureLevel, fine);
-
-console.log('Test 5: moistureLevel = 80');
-moistureLevel = 80
-calculate(moistureLevel, fine);
-
-console.log('Test 6: moistureLevel = 85');
-moistureLevel = 85
-calculate(moistureLevel, fine);
-
-console.log('==================================================================')
-console.log('Medium Testing')
-console.log('Test 1: moistureLevel = null');
-moistureLevel = null
-calculate(moistureLevel, medium);
-
-console.log('Test 2: soil type = null');
-moistureLevel = 69
-calculate(moistureLevel, null);
-
-console.log('Test 3: moistureLevel = 70');
-moistureLevel = 70
-calculate(moistureLevel, medium);
-
-console.log('Test 4: moistureLevel = 87');
-moistureLevel = 87
-calculate(moistureLevel, medium);
-
-console.log('Test 5: moistureLevel = 88');
-moistureLevel = 88
-calculate(moistureLevel, medium);
-
-console.log('Test 6: moistureLevel = 100');
-moistureLevel = 100
-calculate(moistureLevel, medium);
-
-console.log('==================================================================')
-console.log('Coarse Testing')
-console.log('Test 1: moistureLevel = 65');
-moistureLevel = 65
-calculate(moistureLevel, coarse);
-
-console.log('Test 2: moistureLevel = 79');
-moistureLevel = 79
-calculate(moistureLevel, coarse);
-
-console.log('Test 3: moistureLevel = 80');
-moistureLevel = 80
-calculate(moistureLevel, coarse);
-
-console.log('Test 4: moistureLevel = 89');
-moistureLevel = 89
-calculate(moistureLevel, coarse);
-
-console.log('Test 5: moistureLevel = 90');
-moistureLevel = 90
-calculate(moistureLevel, coarse);
-
-console.log('Test 6: moistureLevel = 101');
-moistureLevel = 'abc'
-calculate(moistureLevel, coarse);
+testFunc(fine, [null, 50, 60, 70, 80, 90, 100, null]);
+testFunc(medium, [null, 50, 60, 70, 80, 90, 100, null]);
+testFunc(coarse, [null, 50, 60, 70, 80, 90, 100, null]);
