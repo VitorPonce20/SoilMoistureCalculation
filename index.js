@@ -1,4 +1,4 @@
-const { default: test } = require("node:test");
+
 
 let moistureLevel = 0;
 const fine = "Clay";
@@ -75,8 +75,8 @@ function testFunc(soilType, levels){
 
   levels.forEach((level, index) =>{ 
     console.log('Test ' + (index + 1) + ': ' + level);
-    moistureLevel = test;
-    calculate(level, soilType);
+    moistureLevel = level;
+    calculate(moistureLevel, soilType);
   });
   
 }
