@@ -1,5 +1,3 @@
-const { log, Console } = require("console");
-
 var moistureLevel = 0;
 var fine = "Clay";
 var medium = "Loamy";
@@ -33,7 +31,7 @@ function calculate(moistureLevel, soilType){
     console.log('Soil Type: ' + soilType)
     console.log('Below 70: ' + danger);
     irrigationNeed = true;
-    console.log('Irrigation is needed');  
+    console.log('Irrigation is needed: ' + irrigationNeed);;  
   } else if (soilType == "Loamy" && moistureLevel >= 70 && moistureLevel < 88) {
     console.log('Soil Type: ' + soilType)
     irrigationNeed = true;
@@ -50,10 +48,31 @@ function calculate(moistureLevel, soilType){
       console.log('Upper than level 88 ' + 'Irrigation is needed? ' + irrigationNeed );  
     }
 
+  if (soilType == "Sandy" && moistureLevel < 80) {
+    console.log('Soil Type: ' + soilType)
+    console.log('Below 80: ' + danger);
+    irrigationNeed = true;
+    console.log('Irrigation is needed: ' + irrigationNeed);;  
+  } else if (soilType == "Sandy" && moistureLevel >= 80 && moistureLevel < 90) {
+    console.log('Soil Type: ' + soilType)
+    irrigationNeed = true;
+    console.log('Between 80 and 90: ' + 'irrigation needed? ' + irrigationNeed);
+    }
+    else if (soilType == "Sandy" && moistureLevel == 90) {
+      console.log('Soil Type: ' + soilType)
+      irrigationNeed = false;
+      console.log('level 90 ' + 'Irrigation is needed? ' + irrigationNeed );  
+    }
+    else if (soilType == "Sandy" && moistureLevel >= 90) {
+      console.log('Soil Type: ' + soilType)
+      irrigationNeed = false;
+      console.log('Upper than level 90 ' + 'Irrigation is needed? ' + irrigationNeed );  
+    }
+
   }
   
   
-console.log('=================================')
+console.log('==================================================================')
 console.log('Fine Testing')
 console.log('Test 1: moistureLevel = 45');
 moistureLevel = 45
@@ -79,7 +98,7 @@ console.log('Test 6: moistureLevel = 85');
 moistureLevel = 85
 calculate(moistureLevel, fine);
 
-console.log('=================================')
+console.log('==================================================================')
 console.log('Medium Testing')
 console.log('Test 1: moistureLevel = 45');
 moistureLevel = 45
@@ -104,3 +123,29 @@ calculate(moistureLevel, medium);
 console.log('Test 6: moistureLevel = 100');
 moistureLevel = 100
 calculate(moistureLevel, medium);
+
+console.log('==================================================================')
+console.log('Coarse Testing')
+console.log('Test 1: moistureLevel = 65');
+moistureLevel = 65
+calculate(moistureLevel, coarse);
+
+console.log('Test 2: moistureLevel = 79');
+moistureLevel = 79
+calculate(moistureLevel, coarse);
+
+console.log('Test 3: moistureLevel = 80');
+moistureLevel = 80
+calculate(moistureLevel, coarse);
+
+console.log('Test 4: moistureLevel = 89');
+moistureLevel = 89
+calculate(moistureLevel, coarse);
+
+console.log('Test 5: moistureLevel = 90');
+moistureLevel = 90
+calculate(moistureLevel, coarse);
+
+console.log('Test 6: moistureLevel = 101');
+moistureLevel = 101
+calculate(moistureLevel, coarse);
