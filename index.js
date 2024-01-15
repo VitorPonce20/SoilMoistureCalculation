@@ -1,9 +1,9 @@
-var moistureLevel = 0;
-var fine = "Clay";
-var medium = "Loamy";
-var coarse = "Sandy";
-var irrigationNeed = false;
-var danger = "Dangerously Low Soil Moisture"
+let moistureLevel = 0;
+const fine = "Clay";
+const medium = "Loamy";
+const coarse = "Sandy";
+let irrigationNeed = false;
+const danger = "Dangerously Low Soil Moisture"
 
 function calculate(moistureLevel, soilType){
   if (soilType == "Clay" && moistureLevel < 60) {
