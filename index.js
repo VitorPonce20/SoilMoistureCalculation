@@ -12,15 +12,15 @@ function calculate(moistureLevel, soilType){
       if (moistureLevel < 60) {         
          console.log('Below 60: ' + danger);
          irrigationNeed = true;
-         console.log('Irrigation is needed? ' + irrigationNeed);      
+         console.log('Irrigation is needed: ' + irrigationNeed);      
       } 
       else if (moistureLevel >= 60 && moistureLevel < 80) {        
         irrigationNeed = true;
-        console.log('Between 60 and 80: ' + 'irrigation needed? ' + irrigationNeed);
+        console.log('Between 60 and 80: ' + 'irrigation needed: ' + irrigationNeed);
       }  
       else if (moistureLevel >= 80) {        
         irrigationNeed = false;
-        console.log('level 80 or plus' + 'Irrigation is needed? ' + irrigationNeed );  
+        console.log('level 80 or plus' + 'Irrigation is needed: ' + irrigationNeed );  
         }    
       }
   
@@ -32,11 +32,11 @@ function calculate(moistureLevel, soilType){
       } 
       else if (moistureLevel >= 70 && moistureLevel < 88) {        
         irrigationNeed = true;
-        console.log('Between 70 and 88: ' + 'irrigation needed? ' + irrigationNeed);
+        console.log('Between 70 and 88: ' + 'irrigation needed: ' + irrigationNeed);
       }  
       else if (moistureLevel >= 88) {        
         irrigationNeed = false;
-        console.log('level 88 or plus' + 'Irrigation is needed? ' + irrigationNeed );  
+        console.log('level 88 or plus' + 'Irrigation is needed: ' + irrigationNeed );  
         }
       }
       
@@ -48,11 +48,11 @@ function calculate(moistureLevel, soilType){
       } 
       else if (moistureLevel >= 80 && moistureLevel < 90) {        
         irrigationNeed = true;
-        console.log('Between 80 and 90: ' + 'irrigation needed? ' + irrigationNeed);
+        console.log('Between 80 and 90: ' + 'irrigation needed: ' + irrigationNeed);
       }    
       else if (moistureLevel >= 90) {        
         irrigationNeed = false;
-        console.log('level 90 or plus ' + 'Irrigation is needed? ' + irrigationNeed );  
+        console.log('level 90 or plus ' + 'Irrigation is needed: ' + irrigationNeed );  
       }  
       
     }
@@ -63,18 +63,20 @@ function calculate(moistureLevel, soilType){
 
 
 function logSoil(moistureLevel, soilType){
-  console.log('Soil Type: ' + soilType + ' moisture level: ' + moistureLevel)
+  if(soilType && moistureLevel !== null){
+    console.log('Soil Type: ' + soilType + ' moisture level: ' + moistureLevel)
+  } else{throw new Error('Error: Soil Type or Moisture Level is null')}
 }
   
 console.log('==================================================================')
 console.log('Fine Testing')
-console.log('Test 1: moistureLevel = 45');
+console.log('Test 1: moistureLevel = null');
 moistureLevel = null
 calculate(moistureLevel, fine);
 
-console.log('Test 2: moistureLevel = 55');
+console.log('Test 2: soil type = null');
 moistureLevel = 55
-calculate(moistureLevel, fine);
+calculate(moistureLevel, null);
 
 console.log('Test 3: moistureLevel = 60');
 moistureLevel = 60
@@ -94,13 +96,13 @@ calculate(moistureLevel, fine);
 
 console.log('==================================================================')
 console.log('Medium Testing')
-console.log('Test 1: moistureLevel = 45');
-moistureLevel = 45
+console.log('Test 1: moistureLevel = null');
+moistureLevel = null
 calculate(moistureLevel, medium);
 
-console.log('Test 2: moistureLevel = 69');
+console.log('Test 2: soil type = null');
 moistureLevel = 69
-calculate(moistureLevel, medium);
+calculate(moistureLevel, null);
 
 console.log('Test 3: moistureLevel = 70');
 moistureLevel = 70
