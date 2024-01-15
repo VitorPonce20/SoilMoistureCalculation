@@ -6,60 +6,69 @@ let irrigationNeed = false;
 const danger = "Dangerously Low Soil Moisture"
 
 function calculate(moistureLevel, soilType){
-  if (soilType == "Clay" && moistureLevel < 60) {
-     console.log('Soil Type: ' + soilType + ' moisture level: ' + moistureLevel)
+  if (soilType == fine){
+  if (moistureLevel < 60) {
+     logSoil(moistureLevel, soilType)
      console.log('Below 60: ' + danger);
      irrigationNeed = true;
      console.log('Irrigation is needed? ' + irrigationNeed);      
   } 
-  else if (soilType == "Clay" && moistureLevel >= 60 && moistureLevel < 80) {
-    console.log('Soil Type: ' + soilType + ' moisture level: ' + moistureLevel)
+  else if (moistureLevel >= 60 && moistureLevel < 80) {
+    logSoil(moistureLevel, soilType)
     irrigationNeed = true;
     console.log('Between 60 and 80: ' + 'irrigation needed? ' + irrigationNeed);
   }
   
-  else if (soilType == "Clay" && moistureLevel >= 80) {
-    console.log('Soil Type: ' + soilType + ' moisture level: ' + moistureLevel)
+  else if (moistureLevel >= 80) {
+    logSoil(moistureLevel, soilType)
     irrigationNeed = false;
     console.log('level 80 or plus' + 'Irrigation is needed? ' + irrigationNeed );  
   }
-  
-  if (soilType == "Loamy" && moistureLevel < 70) {
-    console.log('Soil Type: ' + soilType + ' moisture level: ' + moistureLevel)
+    
+  }
+
+  else if (soilType == medium){
+  if ( moistureLevel < 70) {
+    logSoil(moistureLevel, soilType)
     console.log('Below 70: ' + danger);
     irrigationNeed = true;
     console.log('Irrigation is needed: ' + irrigationNeed);;  
   } 
-  else if (soilType == "Loamy" && moistureLevel >= 70 && moistureLevel < 88) {
-    console.log('Soil Type: ' + soilType + ' moisture level: ' + moistureLevel)
+  else if (moistureLevel >= 70 && moistureLevel < 88) {
+    logSoil(moistureLevel, soilType)
     irrigationNeed = true;
     console.log('Between 70 and 88: ' + 'irrigation needed? ' + irrigationNeed);
   }
   
-  else if (soilType == "Loamy" && moistureLevel >= 88) {
-    console.log('Soil Type: ' + soilType + ' moisureLevel: ' + moistureLevel)
+  else if (moistureLevel >= 88) {
+    logSoil(moistureLevel, soilType)
     irrigationNeed = false;
     console.log('level 88 or plus' + 'Irrigation is needed? ' + irrigationNeed );  
-  }
-
-  if (soilType == "Sandy" && moistureLevel < 80) {
-    console.log('Soil Type: ' + soilType + ' moisture level: ' + moistureLevel)
+    }}
+  else if (soilType == "Sandy"){
+  if (moistureLevel < 80) {
+    logSoil(moistureLevel, soilType)
     console.log('Below 80: ' + danger);
     irrigationNeed = true;
     console.log('Irrigation is needed: ' + irrigationNeed);;  
-  } 
-  else if (soilType == "Sandy" && moistureLevel >= 80 && moistureLevel < 90) {
-    console.log('Soil Type: ' + soilType + ' moisture level: ' + moistureLevel)
+    } 
+  else if (moistureLevel >= 80 && moistureLevel < 90) {
+    logSoil(moistureLevel, soilType)
     irrigationNeed = true;
     console.log('Between 80 and 90: ' + 'irrigation needed? ' + irrigationNeed);
-  }    
-  else if (soilType == "Sandy" && moistureLevel >= 90) {
-    console.log('Soil Type: ' + soilType + ' moisture level: ' + moistureLevel)
+    }    
+  else if (moistureLevel >= 90) {
+    logSoil(moistureLevel, soilType)
     irrigationNeed = false;
-    console.log('level 90 or plus' + 'Irrigation is needed? ' + irrigationNeed );  
+    console.log('level 90 or plus ' + 'Irrigation is needed? ' + irrigationNeed );  
+    }
+    
   }
 }
-  
+
+function logSoil(moistureLevel, soilType){
+  console.log('Soil Type: ' + soilType + ' moisture level: ' + moistureLevel)
+}
   
 console.log('==================================================================')
 console.log('Fine Testing')
@@ -136,5 +145,5 @@ moistureLevel = 90
 calculate(moistureLevel, coarse);
 
 console.log('Test 6: moistureLevel = 101');
-moistureLevel = 101
+moistureLevel = 'abc'
 calculate(moistureLevel, coarse);
