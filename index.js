@@ -42,7 +42,7 @@ function calculate(moistureLevel, soilType){
         }
       }
       
-    else if (soilType == "Sandy"){
+    else if (soilType == coarse){
       if (moistureLevel < 80) {        
         console.log('Below 80: ' + danger);
         irrigationNeed = true;
